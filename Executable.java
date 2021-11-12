@@ -76,8 +76,9 @@ public class Executable {
     /**
      * SortNamesの全てのフィールドをリフレクションで取得する。
      */
-    private static void refrection() throws IllegalArgumentException, IllegalAccessException {
+    private static int refrection() throws IllegalArgumentException, IllegalAccessException {
         Field[] fields = Executable.SortNames.class.getDeclaredFields();
+        int sortNum;
         int i = 0;
         for (Field field : fields) {
             if (!Modifier.isPublic(field.getModifiers())) {
@@ -86,6 +87,9 @@ public class Executable {
             System.out.println(i + ":" + field.get(new SortNames()));
             i++;
         }
+        System.out.println("ソートアルゴリズムを選ぶ(数字)");
+        sortNum = scan.nextInt();
+        return sortNum;
     }
 
     /**
