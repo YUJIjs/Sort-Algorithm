@@ -44,14 +44,14 @@ public class Executable {
         Scanner scan = new Scanner(System.in);
 
         do {
-            // データ作成部
-            List<Integer> createList = createList();
+            // リストデータ作成部
+            List<Integer> createList = create();
 
-            // 表示用データ取得部
-            refrection();
+            // ソート条件取得部
+            Map<Integer, String> refrectionList = refrection();
 
-            // ソート選択部
-            selectSort();
+            // ソート実行部
+            execute(createList,refrectionList);
 
             System.out.println("終了:y/n");
             or = scan.next();
@@ -60,19 +60,14 @@ public class Executable {
 
     }
 
-    private static void selectSort() {
-
-        // switch (式){
-        // case 定数1:
-        // // 式を評価した値が定数1と一致したときに実行される処理
-        // ...
-        // break;
-        // case 定数2:
-        // // 式を評価した値が定数2と一致したときに実行される処理
-        // ...
-        // break;
-        // ...
-        // }
+     /**
+     * 取得した情報のソートとデータを取得、対応したソート呼び出す
+     *  
+     * @param createList
+     * @param refrectionList
+     */
+    private static void execute(List<Integer> createList, Map<Integer, String> refrectionList) {
+        
     }
 
     /**
@@ -84,6 +79,7 @@ public class Executable {
     private static Map<Integer, String> refrection() throws IllegalArgumentException, IllegalAccessException {
         Field[] fields = Executable.SortNames.class.getDeclaredFields();
         Map<Integer, String> maps = new HashMap<>();
+        Map<Integer, String> returnMap = new HashMap<>();
         int i = 0;
 
         for (Field field : fields) {
@@ -91,7 +87,6 @@ public class Executable {
             if (!Modifier.isPublic(field.getModifiers())) {
                 field.setAccessible(true);
             }
-            maps.put(i, (String) field.get(new SortNames()));
             System.out.println(i + ":" + field.get(new SortNames()));
 
             i++;
@@ -102,10 +97,12 @@ public class Executable {
 
         for (Entry<Integer, String> entry : maps.entrySet()) {
             if (sortNum == entry.getKey()) {
+                maps.put(sortNum, entry.getValue());
                 System.out.println(entry.getKey() + ":" + entry.getValue());
+                returnMap.put(sortNum, entry.getValue());
             }
         }
-        return maps;
+        return returnMap;
     }
 
     /**
@@ -115,7 +112,7 @@ public class Executable {
      * @return listArray
      * @throws NoSuchAlgorithmException
      */
-    private static List<Integer> createList() throws NoSuchAlgorithmException {
+    private static List<Integer> create() throws NoSuchAlgorithmException {
         System.out.print("作成する数字の個数を入力:");
         int num = scan.nextInt();
         List<Integer> listArray = new ArrayList<>();
