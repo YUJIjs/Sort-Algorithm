@@ -87,6 +87,7 @@ public class Executable {
             if (!Modifier.isPublic(field.getModifiers())) {
                 field.setAccessible(true);
             }
+            maps.put(i,(String) field.get(new SortNames()));
             System.out.println(i + ":" + field.get(new SortNames()));
 
             i++;
@@ -98,7 +99,7 @@ public class Executable {
         for (Entry<Integer, String> entry : maps.entrySet()) {
             if (sortNum == entry.getKey()) {
                 maps.put(sortNum, entry.getValue());
-                System.out.println(entry.getKey() + ":" + entry.getValue());
+                System.out.println(entry.getKey() + ":" + entry.getValue()+"が選択されました。");
                 returnMap.put(sortNum, entry.getValue());
             }
         }
