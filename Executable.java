@@ -3,10 +3,12 @@ import java.lang.reflect.Modifier;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Map.Entry;
 
 public class Executable {
     static Scanner scan = new Scanner(System.in);
@@ -74,27 +76,43 @@ public class Executable {
     }
 
     /**
-     * SortNamesの全てのフィールドをリフレクションで取得する。
+     * SortNamesの全てのフィールドをリフレクションで取得する。 リフレクションで取得後、Mapに格納 指定した番号のMapをreturnする。
+     * 
+     * @throws IllegalArgumentException
+     * @throws IllegalAccessException
      */
-    private static int refrection() throws IllegalArgumentException, IllegalAccessException {
+    private static Map<Integer, String> refrection() throws IllegalArgumentException, IllegalAccessException {
         Field[] fields = Executable.SortNames.class.getDeclaredFields();
-        int sortNum;
+        Map<Integer, String> maps = new HashMap<>();
         int i = 0;
+
         for (Field field : fields) {
+
             if (!Modifier.isPublic(field.getModifiers())) {
                 field.setAccessible(true);
             }
+            maps.put(i, (String) field.get(new SortNames()));
             System.out.println(i + ":" + field.get(new SortNames()));
+
             i++;
         }
+
         System.out.println("ソートアルゴリズムを選ぶ(数字)");
-        sortNum = scan.nextInt();
-        return sortNum;
+        int sortNum = scan.nextInt();
+
+        for (Entry<Integer, String> entry : maps.entrySet()) {
+            if (sortNum == entry.getKey()) {
+                System.out.println(entry.getKey() + ":" + entry.getValue());
+            }
+        }
+        return maps;
     }
 
     /**
-     * 指定した数字の数だけリストを作成する ランダムに数字を作成するか、自分で指定するかを決める、
+     * 指定した数字の数だけリストを作成する ランダムに数字を作成するか、自分で指定するかを決める、 1:指定した数だけ乱数を発生させ、リストに格納する
+     * 2:指定した数だけ自分で数字を入力し、リストに格納する リストをreturnする
      * 
+     * @return listArray
      * @throws NoSuchAlgorithmException
      */
     private static List<Integer> createList() throws NoSuchAlgorithmException {
