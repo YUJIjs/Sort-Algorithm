@@ -1,6 +1,5 @@
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.net.http.HttpResponse.BodySubscriber;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -10,9 +9,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Map.Entry;
-
-import javax.swing.text.html.HTMLDocument.Iterator;
-
 
 public class Executable {
     static Scanner scan = new Scanner(System.in);
@@ -52,10 +48,10 @@ public class Executable {
             List<Integer> createList = create();
 
             // ソート条件取得部
-            Map<Integer, String> refrectionList = refrection();
+            Map<Integer, String> refrectionMap = refrection();
 
             // ソート実行部
-            execute(createList,refrectionList);
+            execute(createList,refrectionMap);
 
             System.out.println("終了:y/n");
             or = scan.next();
@@ -70,8 +66,8 @@ public class Executable {
      * @param createList
      * @param refrectionList
      */
-    private static void execute(List<Integer> createList, Map<Integer, String> refrectionList) {
-            SortImpl sort = new SortImpl(createList,refrectionList);    
+    private static void execute(List<Integer> createList, Map<Integer, String> refrectionMap) {
+            SortImpl sort = new SortImpl();    
             sort.bubbleSort();
         }
 
