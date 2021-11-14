@@ -67,7 +67,7 @@ public class Executable {
      * @param refrectionList
      */
     private static void execute(List<Integer> createList, Map<Integer, String> refrectionMap) {
-            SortImpl sort = new SortImpl();    
+            Sort sort = new SortImpl(createList, refrectionMap);    
             sort.bubbleSort();
         }
 
