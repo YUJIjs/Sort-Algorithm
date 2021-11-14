@@ -4,19 +4,19 @@ import java.util.Map;
 
 public class SortImpl implements Sort{
 
+    private List<Integer> createList;
+    private Map<Integer, String> refrectionMap;
+    
+    public SortImpl(List<Integer> createList, Map<Integer, String> refrectionMap) {
+        this.createList = createList;
+        this.refrectionMap = refrectionMap;
+    }
+
     @Override
     public void bubbleSort(){
         System.out.println("bubbleSortを呼び出しています");
-
-
-
-
-
-
-
-
-
-
+        System.out.println(createList);
+        System.out.println(refrectionMap);
     }
 
     // @Override
