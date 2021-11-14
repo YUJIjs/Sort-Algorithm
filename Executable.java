@@ -1,5 +1,6 @@
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.net.http.HttpResponse.BodySubscriber;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -10,30 +11,33 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Map.Entry;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
+
 public class Executable {
     static Scanner scan = new Scanner(System.in);
 
     static class SortNames {
 
-        public final String BUBBLE_SORT = "バブルソート";
-        public final String BUCKET_SORT = "バケットソート";
-        public final String QUICK_SORT = "クイックソート";
-        public final String SELECT_SORT = "選択ソート";
-        public final String MERGE_SORT = "マージソート";
-        public final String INSERTION_SORT = "挿入ソート";
-        public final String SHELL_SORT = "シェルソート";
-        public final String SHAKER_SORT = "シェーカーソート";
-        public final String COM_SORT = "コムソート";
-        public final String GNOME_SORT = "ノームソート";
-        public final String SELF_BALANCING_BINARY_SEARCH_TREE_SORT = "平衡二分探索木ソート";
-        public final String LIBRARY_SORT = "図書館ソート";
-        public final String INPLACE_MERGE_SORT = "インプレースマージソート";
-        public final String SMOOTH_SORT = "スムースソート";
-        public final String INTRO_SORT = "イントロソート";
-        public final String PATIENCE_SORT = "ペイシェンスソート";
-        public final String STRAND_SORT = "ストランドソート";
-        public final String ODD_EVEN_SORT = "奇遇転置ソート";
-        public final String SHARE_SORT = "シェアソート";
+        public final String bubbleSort = "バブルソート";
+        public final String bucketSort = "バケットソート";
+        public final String quickSort = "クイックソート";
+        public final String selectSort = "選択ソート";
+        public final String mergeSort = "マージソート";
+        public final String insertionSort = "挿入ソート";
+        public final String shellSort = "シェルソート";
+        public final String shakerSort = "シェーカーソート";
+        public final String comSort = "コムソート";
+        public final String gnomeSort = "ノームソート";
+        public final String selfBalancingBinarySearchTreeSort = "平衡二分探索木ソート";
+        public final String librarySort = "図書館ソート";
+        public final String inPlaceMergeSort = "インプレースマージソート";
+        public final String smoothSort = "スムースソート";
+        public final String introSort = "イントロソート";
+        public final String patienceSort = "ペイシェンスソート";
+        public final String strandSort = "ストランドソート";
+        public final String oddEvenSort = "奇遇転置ソート";
+        public final String shareSort = "シェアソート";
 
     }
 
@@ -67,8 +71,9 @@ public class Executable {
      * @param refrectionList
      */
     private static void execute(List<Integer> createList, Map<Integer, String> refrectionList) {
-        
-    }
+            SortImpl sort = new SortImpl(createList,refrectionList);    
+            sort.bubbleSort();
+        }
 
     /**
      * SortNamesの全てのフィールドをリフレクションで取得する。 リフレクションで取得後、Mapに格納 指定した番号のMapをreturnする。
