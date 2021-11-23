@@ -64,7 +64,7 @@ public class Executable {
      * 取得した情報のソートとデータを取得、対応したソート呼び出す
      * 
      * @param createList
-     * @param refrectionList
+     * @param String selectSort
      */
     private static void execute(List<Integer> createList, String selectSort) {
         Sort sort = new SortImpl(createList, selectSort);
@@ -135,9 +135,8 @@ public class Executable {
     }
 
     /**
-     * SortNamesの全てのフィールドをリフレクションで取得する。 リフレクションで取得後、Mapに格納 指定した番号のMapをreturnする。
      * 
-     * @return List<String> returnList
+     * @return String selectSort
      * @throws IllegalArgumentException
      * @throws IllegalAccessException
      */
