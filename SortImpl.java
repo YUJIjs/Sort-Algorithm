@@ -1,97 +1,119 @@
-import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
 
 public class SortImpl implements Sort{
 
     private List<Integer> createList;
-    private Map<Integer, String> refrectionMap;
+    private String selectSort;
     
-    public SortImpl(List<Integer> createList, Map<Integer, String> refrectionMap) {
+    public SortImpl(List<Integer> createList, String selectSort) {
         this.createList = createList;
-        this.refrectionMap = refrectionMap;
+        this.selectSort = selectSort;
     }
 
     @Override
     public void bubbleSort(){
-        System.out.println("bubbleSortを呼び出しています");
+        System.out.println("bubbleSort");
         System.out.println(createList);
-        System.out.println(refrectionMap);
+        System.out.println(selectSort);
     }
 
-    // @Override
-    // public void bucketSort() {
-    // }
+    @Override
+    public void bucketSort() {
+        System.out.println("bucketSort");
+    }
 
-    // @Override
-    // public void heapSort() {
-    // }
+    @Override
+    public void heapSort() {
+        System.out.println("heapSort");
+    }
 
-    // @Override
-    // public void quickSort() {
-    // }
+    @Override
+    public void quickSort() {
+        System.out.println("quickSort");
+    }
 
-    // @Override
-    // public void selectSort() {
-    // }
+    @Override
+    public void selectSort() {
+        System.out.println("selectSort");
+    }
 
-    // @Override
-    // public void mergeSort() {
-    // }
+    @Override
+    public void mergeSort() {
+        System.out.println("mergeSort");
+    }
 
-    // @Override
-    // public void insertionSort() {
-    // }
+    @Override
+    public void insertionSort() {
+        System.out.println("insertionSort");
+    }
 
-    // @Override
-    // public void shellSort() {
-    // }
+    @Override
+    public void shellSort() {
+        System.out.println("shellSort");
+    }
 
-    // @Override
-    // public void shakerSort() {
-    // }
+    @Override
+    public void shakerSort() {
+        System.out.println("shakerSort");
+    }
 
-    // @Override
-    // public void comSort() {
-    // }
+    @Override
+    public void comSort() {
+        System.out.println("comSort");
+    }
 
-    // @Override
-    // public void gnomeSort() {
-    // }
+    @Override
+    public void gnomeSort() {
+        System.out.println("gnomeSort");
+    }
 
-    // @Override
-    // public void selfBalancingBinarySearchTreeSort() {
-    // }
+    @Override
+    public void selfBalancingBinarySearchTreeSort() {
+        System.out.println("selfBalancingBinarySearchTreeSort");
+    }
 
-    // @Override
-    // public void librarySort() {
-    // }
+    @Override
+    public void librarySort() {
+        System.out.println("librarySort");
+    }
 
-    // @Override
-    // public void inPlaceMergeSort() {
-    // }
+    @Override
+    public void inPlaceMergeSort() {
+        System.out.println("inPlaceMergeSort");
+    }
 
-    // @Override
-    // public void smoothSort() {
-    // }
+    @Override
+    public void smoothSort() {
+        System.out.println("smoothSort");
+    }
 
-    // @Override
-    // public void voidroSort() {
-    // }
+    @Override
+    public void voidroSort() {
+        System.out.println("voidroSort");
+    }
 
-    // @Override
-    // public void patienceSort() {
-    // }
+    @Override
+    public void patienceSort() {
+        System.out.println("bucketSort");
+    }
 
-    // @Override
-    // public void strandSort() {
-    // }
+    @Override
+    public void strandSort() {
+        System.out.println("bucketSort");
+    }
 
-    // @Override
-    // public void oddEvenSort() {
-    // }
+    @Override
+    public void oddEvenSort() {
+        System.out.println("bucketSort");
+    }
 
-    // @Override
-    // public void shareSort() {
-    // }    
+    @Override
+    public void shareSort() {
+        System.out.println("bucketSort");
+    }
+
+    @Override
+    public void introSort() {
+        System.out.println("bucketSort");
+    }    
 }

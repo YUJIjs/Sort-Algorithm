@@ -48,10 +48,10 @@ public class Executable {
             List<Integer> createList = create();
 
             // ソート条件取得部
-            Map<Integer, String> refrectionMap = refrection();
+            String selectSort = selectSort();
 
             // ソート実行部
-            execute(createList,refrectionMap);
+            execute(createList, selectSort);
 
             System.out.println("終了:y/n");
             or = scan.next();
@@ -60,58 +60,120 @@ public class Executable {
 
     }
 
-     /**
+    /**
      * 取得した情報のソートとデータを取得、対応したソート呼び出す
-     *  
+     * 
      * @param createList
      * @param refrectionList
      */
-    private static void execute(List<Integer> createList, Map<Integer, String> refrectionMap) {
-            Sort sort = new SortImpl(createList, refrectionMap);    
+    private static void execute(List<Integer> createList, String selectSort) {
+        Sort sort = new SortImpl(createList, selectSort);
+
+        System.out.println(selectSort);
+
+        switch (selectSort) {
+        case "バブルソート":
             sort.bubbleSort();
+            break;
+        case "バケットソート":
+            sort.bucketSort();
+            break;
+        case "クイックソート":
+            sort.quickSort();
+            break;
+        case "選択ソート":
+            sort.selectSort();
+            break;
+        case "マージソート":
+            sort.mergeSort();
+            break;
+        case "挿入ソート":
+            sort.insertionSort();
+            break;
+        case "シェルソート":
+            sort.shellSort();
+            break;
+        case "シェーカーソート":
+            sort.shakerSort();
+            break;
+        case "コムソート":
+            sort.comSort();
+            break;
+        case "ノームソート":
+            sort.gnomeSort();
+            break;
+        case "平衡二分探索木ソート":
+            sort.selfBalancingBinarySearchTreeSort();
+            break;
+        case "図書館ソート":
+            sort.librarySort();
+            break;
+        case "インプレースマージソート":
+            sort.inPlaceMergeSort();
+            break;
+        case "スムースソート":
+            sort.smoothSort();
+            break;
+        case "イントロソート":
+            sort.introSort();
+            break;
+        case "ペイシェンスソート":
+            sort.patienceSort();
+            break;
+        case "ストランドソート":
+            sort.strandSort();
+            break;
+        case "奇遇転置ソート":
+            sort.oddEvenSort();
+            break;
+        case "シェアソート":
+            sort.shareSort();
+            break;
+        default:
+            System.out.println("どのソートにも一致しませんでした");
         }
+    }
 
     /**
      * SortNamesの全てのフィールドをリフレクションで取得する。 リフレクションで取得後、Mapに格納 指定した番号のMapをreturnする。
      * 
+     * @return List<String> returnList
      * @throws IllegalArgumentException
      * @throws IllegalAccessException
      */
-    private static Map<Integer, String> refrection() throws IllegalArgumentException, IllegalAccessException {
+    private static String selectSort() throws IllegalArgumentException, IllegalAccessException {
         Field[] fields = Executable.SortNames.class.getDeclaredFields();
-        Map<Integer, String> maps = new HashMap<>();
-        Map<Integer, String> returnMap = new HashMap<>();
+        List<String> list = new ArrayList<>();
+        Map<Integer, String> map = new HashMap<>();
+        String str = "";
         int i = 0;
 
         for (Field field : fields) {
-
             if (!Modifier.isPublic(field.getModifiers())) {
                 field.setAccessible(true);
             }
-            maps.put(i,(String) field.get(new SortNames()));
             System.out.println(i + ":" + field.get(new SortNames()));
-
+            map.put(i, (String) field.get(new SortNames()));
+            list.add(i, (String) field.get(new SortNames()));
             i++;
         }
 
         System.out.println("ソートアルゴリズムを選ぶ(数字)");
         int sortNum = scan.nextInt();
-
-        for (Entry<Integer, String> entry : maps.entrySet()) {
+        for (Entry<Integer, String> entry : map.entrySet()) {
             if (sortNum == entry.getKey()) {
-                maps.put(sortNum, entry.getValue());
-                System.out.println(entry.getKey() + ":" + entry.getValue()+"が選択されました。");
-                returnMap.put(sortNum, entry.getValue());
+                System.out.println(entry.getValue() + "が選択されました");
+                str = entry.getValue();
             }
         }
-        return returnMap;
+        return str;
     }
 
     /**
      * 指定した数字の数だけリストを作成する ランダムに数字を作成するか、自分で指定するかを決める、 1:指定した数だけ乱数を発生させ、リストに格納する
      * 2:指定した数だけ自分で数字を入力し、リストに格納する リストをreturnする
      * 
-     * @return listArray
+     * @return List<Integer> listArray
      * @throws NoSuchAlgorithmException
      */
     private static List<Integer> create() throws NoSuchAlgorithmException {
