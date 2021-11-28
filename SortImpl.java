@@ -1,10 +1,13 @@
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class SortImpl implements Sort {
 
     private List<Integer> createList;
+    private ListIterator<Integer> sortList = createList.listIterator();
     private String selectSort;
+
 
     public SortImpl(List<Integer> createList, String selectSort) {
         this.createList = createList;
@@ -14,8 +17,7 @@ public class SortImpl implements Sort {
 
     @Override
     public void bubbleSort() {
-        Iterator<Integer> bubbleSortList = createList.iterator();
-        printIterable(bubbleSortList);
+        printIterable(sortList);
 
     }
 
