@@ -1,50 +1,51 @@
+import java.util.Iterator;
 import java.util.List;
 
-public class SortImpl implements Sort{
+public class SortImpl implements Sort {
 
     private List<Integer> createList;
     private String selectSort;
-    
+
     public SortImpl(List<Integer> createList, String selectSort) {
         this.createList = createList;
         this.selectSort = selectSort;
+        System.out.println(selectSort+"を開始します");
     }
 
     @Override
-    public void bubbleSort(){
-        System.out.println("bubbleSort");
-        System.out.println(createList);
-        System.out.println(selectSort);
+    public void bubbleSort() {
+        Iterator<Integer> bubbleSortList = createList.iterator();
+        printIterable(bubbleSortList);
+
     }
 
     @Override
     public void bucketSort() {
-        System.out.println("bucketSort");
     }
 
     @Override
     public void heapSort() {
-        System.out.println("heapSort");
+        System.out.println(selectSort+"を開始します");
     }
 
     @Override
     public void quickSort() {
-        System.out.println("quickSort");
+        System.out.println(selectSort+"を開始します");
     }
 
     @Override
     public void selectSort() {
-        System.out.println("selectSort");
+        System.out.println(selectSort+"を開始します");
     }
 
     @Override
     public void mergeSort() {
-        System.out.println("mergeSort");
+        System.out.println(selectSort+"を開始します");
     }
 
     @Override
     public void insertionSort() {
-        System.out.println("insertionSort");
+        System.out.println(selectSort+"を開始します");
     }
 
     @Override
@@ -115,5 +116,12 @@ public class SortImpl implements Sort{
     @Override
     public void introSort() {
         System.out.println("bucketSort");
-    }    
+    }
+
+    private static void printIterable(Iterator<Integer> iterator){
+        while (iterator.hasNext()) {
+            int s = iterator.next();
+            System.out.print(s+",");
+          }
+    }
 }

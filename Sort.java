@@ -21,9 +21,11 @@ interface Sort {
     public void comSort();
 
     public void gnomeSort();
+
     public void selfBalancingBinarySearchTreeSort();
 
     public void librarySort();
+
     public void inPlaceMergeSort();
 
     public void smoothSort();

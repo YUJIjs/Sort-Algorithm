@@ -161,7 +161,6 @@ public class Executable {
         int sortNum = scan.nextInt();
         for (Entry<Integer, String> entry : map.entrySet()) {
             if (sortNum == entry.getKey()) {
-                System.out.println(entry.getValue() + "が選択されました");
                 str = entry.getValue();
             }
         }
