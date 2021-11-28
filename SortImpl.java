@@ -1,24 +1,21 @@
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-
 public class SortImpl implements Sort {
 
     private List<Integer> createList;
-    private ListIterator<Integer> sortList = createList.listIterator();
+    private Iterator<Integer> sortIterator = createList.iterator();
     private String selectSort;
-
 
     public SortImpl(List<Integer> createList, String selectSort) {
         this.createList = createList;
         this.selectSort = selectSort;
-        System.out.println(selectSort+"を開始します");
+        System.out.println(selectSort + "を開始します");
     }
 
     @Override
     public void bubbleSort() {
-        printIterable(sortList);
-
+        //for文でソートするごとにイテレータで出力する
+        printIterable(sortIterator);
     }
 
     @Override
@@ -101,10 +98,11 @@ public class SortImpl implements Sort {
     public void introSort() {
     }
 
-    private static void printIterable(Iterator<Integer> iterator){
+    /**iteratorで中身の要素を全て取得するまで出力する */
+    private static void printIterable(Iterator<Integer> iterator) {
         while (iterator.hasNext()) {
             int s = iterator.next();
-            System.out.print(s+",");
-          }
+            System.out.print(s + ",");
+        }
     }
 }
